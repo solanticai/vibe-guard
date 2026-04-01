@@ -109,13 +109,14 @@ export class CloudClient {
     }
 
     if (!res.ok) {
-      let error: CloudApiError;
+      let errorMsg: string;
       try {
-        error = (await res.json()) as CloudApiError;
+        const body = (await res.json()) as Record<string, unknown>;
+        errorMsg = (body.message ?? body.error ?? body.msg ?? res.statusText) as string;
       } catch {
-        error = { code: 'UNKNOWN', message: res.statusText, status: res.status };
+        errorMsg = res.statusText;
       }
-      throw new Error(`Cloud API error (${error.status}): ${error.message}`);
+      throw new Error(`Cloud API error (${res.status}): ${errorMsg}`);
     }
 
     return res.json();
