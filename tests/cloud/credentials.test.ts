@@ -56,11 +56,13 @@ describe('cloud/credentials', () => {
     expect(hasValidCredentials()).toBe(true);
   });
 
-  it('should detect expired credentials', () => {
+  it('should return true for expired credentials (refresh handles expiry)', () => {
+    // hasValidCredentials only checks if a token exists.
+    // Expiry is handled by getValidCredentials/refreshAccessToken at call time.
     writeCredentials({
       accessToken: 'expired-token',
       expiresAt: '2020-01-01T00:00:00Z',
     });
-    expect(hasValidCredentials()).toBe(false);
+    expect(hasValidCredentials()).toBe(true);
   });
 });
