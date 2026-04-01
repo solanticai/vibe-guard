@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-04-01
+
+First stable release.
+
+### Highlights
+
+- **21 built-in rules**: 7 security, 11 quality, 7 workflow
+- **14 presets**: nextjs-15, typescript-strict, react-19, supabase, tailwind, django, fastapi, laravel, wordpress, react-native, astro, sveltekit, python-strict, go
+- **5 adapters**: Claude Code (runtime), Cursor, Codex, OpenCode, GitHub Actions
+- **16 CLI commands**: init, add, remove, generate, doctor, lint, learn, report, eject, upgrade, fix, cloud login/logout/connect/status, sync
+- **Rule Profiles**: strict, standard, relaxed, audit
+- **Autofix API**: Machine-applicable fixes via `vibecheck fix`
+- **Monorepo support**: Per-workspace config overrides
+- **Config inheritance**: Global ~/.vibecheck/config.ts
+- **Cloud sync**: Auto-sync rule hits to VibeCheck Cloud
+- **Performance budget**: 100ms p95 target with instrumentation
+- **Convention learning**: Import, naming, structure analyzers
+- **80%+ test coverage** across 334 tests
+
 ## [1.0.0-rc.1] - 2026-04-01
 
 ### Added
