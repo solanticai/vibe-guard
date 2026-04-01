@@ -1,4 +1,5 @@
 import { execSync } from 'node:child_process';
+import { isNewerVersion } from '../utils/semver.js';
 
 /** Version information for a package */
 export interface VersionInfo {
@@ -37,7 +38,7 @@ export function checkForUpdates(packages: string[]): VersionInfo[] {
         name: pkg,
         current,
         latest,
-        hasUpdate: current !== latest && current !== 'unknown',
+        hasUpdate: current !== 'unknown' && latest !== 'unknown' && isNewerVersion(current, latest),
       });
     } catch {
       results.push({
