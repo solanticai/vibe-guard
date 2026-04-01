@@ -1,3 +1,5 @@
+import { writeFile, mkdir } from 'node:fs/promises';
+import { join, dirname } from 'node:path';
 import type { DiscoveredPattern } from './analyzers/types.js';
 
 /** A rule configuration suggested from a discovered pattern */
@@ -43,4 +45,48 @@ export function mergePromotions(
   }
 
   return merged;
+}
+
+/**
+ * Generate a TypeScript rule file from a promotion suggestion.
+ * Writes to .vibecheck/rules/custom/<ruleId>.ts
+ */
+export async function generateRuleFile(
+  suggestion: PromotionSuggestion,
+  projectRoot: string,
+): Promise<string> {
+  const safeName = suggestion.ruleId.replace('/', '-');
+  const outputPath = join(projectRoot, '.vibecheck', 'rules', 'custom', `${safeName}.ts`);
+  await mkdir(dirname(outputPath), { recursive: true });
+
+  const configJson = JSON.stringify(suggestion.config, null, 2);
+  const content = `import type { Rule } from '@solanticai/vibecheck';
+
+/**
+ * Auto-generated rule from convention learning.
+ * Reason: ${suggestion.reason}
+ * Confidence: ${Math.round(suggestion.confidence * 100)}%
+ */
+export const ${toCamelCase(safeName)}: Rule = {
+  id: '${suggestion.ruleId}',
+  name: '${suggestion.ruleId}',
+  description: '${suggestion.reason.replace(/'/g, "\\'")}',
+  severity: 'warn',
+  events: ['PreToolUse'],
+  match: { tools: ['Write'] },
+  check: (context) => {
+    // Base rule: ${suggestion.ruleId}
+    // Config: ${configJson}
+    // TODO: Customize this check logic for your project
+    return { status: 'pass', ruleId: '${suggestion.ruleId}' };
+  },
+};
+`;
+
+  await writeFile(outputPath, content, 'utf-8');
+  return outputPath;
+}
+
+function toCamelCase(str: string): string {
+  return str.replace(/[-/](\w)/g, (_, c) => c.toUpperCase());
 }

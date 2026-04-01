@@ -6,6 +6,7 @@ import { noDeprecatedApi } from './no-deprecated-api.js';
 import { antiPatterns } from './anti-patterns.js';
 import { fileStructure } from './file-structure.js';
 import { hallucinationGuard } from './hallucination-guard.js';
+import { testCoverage } from './test-coverage.js';
 
 export const qualityRules: Rule[] = [
   importAliases,
@@ -15,6 +16,7 @@ export const qualityRules: Rule[] = [
   antiPatterns,
   fileStructure,
   hallucinationGuard,
+  testCoverage,
 ];
 
 export {
@@ -25,4 +27,5 @@ export {
   antiPatterns,
   fileStructure,
   hallucinationGuard,
+  testCoverage,
 };

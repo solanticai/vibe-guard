@@ -3,7 +3,15 @@ import type { ZodType } from 'zod';
 // ─── Hook Events ────────────────────────────────────────────────────────────
 
 /** Hook events supported by Claude Code */
-export type HookEvent = 'PreToolUse' | 'PostToolUse' | 'Stop';
+export type HookEvent =
+  | 'PreToolUse'
+  | 'PostToolUse'
+  | 'Stop'
+  | 'PreCompact'
+  | 'SessionStart'
+  | 'SessionEnd'
+  | 'UserPromptSubmit'
+  | 'Notification';
 
 // ─── Match Patterns ─────────────────────────────────────────────────────────
 

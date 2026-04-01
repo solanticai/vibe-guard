@@ -38,6 +38,10 @@ Desktop.ini
 # Project plan (private)
 vibecheck-project-plan.md
 
+# Docs build output
+docs/dist/
+docs/.astro/
+
 # Logs
 *.log
 npm-debug.log*

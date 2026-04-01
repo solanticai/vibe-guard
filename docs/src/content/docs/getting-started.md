@@ -1,4 +1,7 @@
-# Getting Started
+---
+title: Getting Started
+description: Install VibeCheck and set up AI coding guardrails in 30 seconds.
+---
 
 ## Installation
 
@@ -13,7 +16,6 @@ npx vibecheck init
 ```
 
 The init wizard will:
-
 1. Detect your framework (Next.js, React, etc.)
 2. Ask which AI agents you use
 3. Ask which presets to enable
@@ -34,16 +36,12 @@ After running `init`, VibeCheck creates:
 npx vibecheck doctor
 ```
 
-This checks:
+## How It Works
 
-- Config file exists and is valid
-- Hook scripts are generated
-- Rules are properly configured
-- Node modules are available
+```
+Developer prompt → AI Agent → VibeCheck hooks → PASS or BLOCK
+```
 
-## Next Steps
+For Claude Code, hooks execute as subprocesses before each tool use. They read the proposed change, evaluate it against your rules, and either allow (exit 0) or block (exit 2).
 
-- [Configuration](./configuration.md) — customize rules and presets
-- [Rules Reference](./rules/) — see all built-in rules
-- [Presets](./presets.md) — ecosystem-specific rule bundles
-- [Creating Custom Rules](./guides/rule-authoring.md) — extend VibeCheck
+**Only Claude Code provides runtime enforcement.** Cursor, Codex, and OpenCode receive advisory guidance via generated config files.

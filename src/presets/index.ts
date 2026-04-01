@@ -7,6 +7,8 @@ import { tailwind } from './tailwind.js';
 import { django } from './django.js';
 import { fastapi } from './fastapi.js';
 import { laravel } from './laravel.js';
+import { wordpress } from './wordpress.js';
+import { reactNative } from './react-native.js';
 
 /** All built-in presets */
 export const allBuiltinPresets = [
@@ -18,6 +20,8 @@ export const allBuiltinPresets = [
   django,
   fastapi,
   laravel,
+  wordpress,
+  reactNative,
 ];
 
 /** Register all built-in presets */
@@ -30,4 +34,15 @@ export function registerBuiltinPresets(): void {
 // Auto-register on import
 registerBuiltinPresets();
 
-export { nextjs15, typescriptStrict, react19, supabase, tailwind, django, fastapi, laravel };
+export {
+  nextjs15,
+  typescriptStrict,
+  react19,
+  supabase,
+  tailwind,
+  django,
+  fastapi,
+  laravel,
+  wordpress,
+  reactNative,
+};
