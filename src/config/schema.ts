@@ -19,13 +19,25 @@ export const learnConfigSchema = z
   })
   .optional();
 
+/** Schema for cloud sync settings */
+export const cloudConfigSchema = z
+  .object({
+    enabled: z.boolean().optional(),
+    projectId: z.string().optional(),
+    autoSync: z.boolean().optional(),
+    excludePaths: z.array(z.string()).optional(),
+  })
+  .optional();
+
 /** Schema for the complete user config (vibecheck.config.ts) */
 export const vibeCheckConfigSchema = z.object({
+  profile: z.enum(['strict', 'standard', 'relaxed', 'audit']).optional(),
   presets: z.array(z.string()).optional(),
   agents: z.array(z.enum(['claude-code', 'cursor', 'codex', 'opencode'])).optional(),
   rules: z.record(z.string(), ruleConfigSchema).optional(),
   plugins: z.array(z.string()).optional(),
   learn: learnConfigSchema,
+  cloud: cloudConfigSchema,
 });
 
 export type ValidatedConfig = z.infer<typeof vibeCheckConfigSchema>;

@@ -105,4 +105,53 @@ program
     await upgradeCommand(options);
   });
 
+// Cloud subcommands
+const cloud = program
+  .command('cloud')
+  .description('VibeCheck Cloud commands (login, connect, status)');
+
+cloud
+  .command('login')
+  .description('Authenticate with VibeCheck Cloud')
+  .option('--token <token>', 'Provide auth token directly')
+  .action(async (options: { token?: string }) => {
+    const { cloudLoginCommand } = await import('./commands/cloud-login.js');
+    await cloudLoginCommand(options);
+  });
+
+cloud
+  .command('logout')
+  .description('Remove stored Cloud credentials')
+  .action(async () => {
+    const { cloudLogoutCommand } = await import('./commands/cloud-logout.js');
+    await cloudLogoutCommand();
+  });
+
+cloud
+  .command('connect')
+  .description('Register current repository with VibeCheck Cloud')
+  .option('--name <name>', 'Project name (defaults to directory name)')
+  .action(async (options: { name?: string }) => {
+    const { cloudConnectCommand } = await import('./commands/cloud-connect.js');
+    await cloudConnectCommand(options);
+  });
+
+cloud
+  .command('status')
+  .description('Show Cloud connection status')
+  .action(async () => {
+    const { cloudStatusCommand } = await import('./commands/cloud-status.js');
+    await cloudStatusCommand();
+  });
+
+program
+  .command('sync')
+  .description('Upload rule-hits data to VibeCheck Cloud')
+  .option('--force', 'Re-upload all data (ignores cursor)')
+  .option('--dry-run', 'Show what would be uploaded without sending')
+  .action(async (options: { force?: boolean; dryRun?: boolean }) => {
+    const { syncCommand } = await import('./commands/sync.js');
+    await syncCommand(options);
+  });
+
 program.parse();

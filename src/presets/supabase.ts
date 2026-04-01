@@ -17,5 +17,7 @@ export const supabase: Preset = {
     'quality/import-aliases': {
       aliases: ['@/'],
     },
+    'security/env-exposure': true,
+    'quality/no-console-log': true,
   },
 };

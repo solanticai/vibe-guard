@@ -8,6 +8,7 @@ import type {
 import { vibeCheckConfigSchema } from './schema.js';
 import { DEFAULT_CONFIG } from './defaults.js';
 import { discoverConfigFile, readRawConfig } from './discovery.js';
+import { getProfileSeverity, type ProfileName } from './profiles.js';
 
 /**
  * Load and resolve the vibecheck config from a project root.
@@ -83,6 +84,22 @@ export function resolveConfig(
       });
     } else {
       rules.set(ruleId, resolved);
+    }
+  }
+
+  // 3. Apply profile severity overrides (after presets + user rules)
+  const profile = config.profile as ProfileName | undefined;
+  if (profile) {
+    for (const [ruleId, ruleConfig] of rules) {
+      // Only override if the user didn't explicitly set severity for this rule
+      const userExplicitlySeverity =
+        userRules[ruleId] &&
+        typeof userRules[ruleId] === 'object' &&
+        'severity' in (userRules[ruleId] as RuleConfig);
+
+      if (!userExplicitlySeverity) {
+        ruleConfig.severity = getProfileSeverity(profile, ruleId);
+      }
     }
   }
 

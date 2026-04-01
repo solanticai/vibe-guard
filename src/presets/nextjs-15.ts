@@ -18,5 +18,8 @@ export const nextjs15: Preset = {
     'quality/import-aliases': {
       aliases: ['@/'],
     },
+    'quality/file-structure': true,
+    'quality/no-console-log': true,
+    'security/env-exposure': true,
   },
 };

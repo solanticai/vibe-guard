@@ -7,6 +7,8 @@ import { antiPatterns } from './anti-patterns.js';
 import { fileStructure } from './file-structure.js';
 import { hallucinationGuard } from './hallucination-guard.js';
 import { testCoverage } from './test-coverage.js';
+import { maxFileLength } from './max-file-length.js';
+import { noConsoleLog } from './no-console-log.js';
 
 export const qualityRules: Rule[] = [
   importAliases,
@@ -17,6 +19,8 @@ export const qualityRules: Rule[] = [
   fileStructure,
   hallucinationGuard,
   testCoverage,
+  maxFileLength,
+  noConsoleLog,
 ];
 
 export {
@@ -28,4 +32,6 @@ export {
   fileStructure,
   hallucinationGuard,
   testCoverage,
+  maxFileLength,
+  noConsoleLog,
 };

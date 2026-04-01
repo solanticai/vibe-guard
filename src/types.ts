@@ -122,6 +122,8 @@ export interface LearnConfig {
 
 /** User-facing config (vibecheck.config.ts) */
 export interface VibeCheckConfig {
+  /** Severity profile: strict, standard, relaxed, or audit */
+  profile?: 'strict' | 'standard' | 'relaxed' | 'audit';
   /** Preset names to apply (e.g., ["nextjs-15", "typescript-strict"]) */
   presets?: string[];
   /** AI agents to generate adapters for (default: ["claude-code"]) */
@@ -132,6 +134,20 @@ export interface VibeCheckConfig {
   plugins?: string[];
   /** Convention learning settings */
   learn?: LearnConfig;
+  /** Cloud sync settings */
+  cloud?: CloudConfig;
+}
+
+/** Cloud sync settings */
+export interface CloudConfig {
+  /** Enable Cloud sync */
+  enabled?: boolean;
+  /** Cloud project ID (set by `vibecheck cloud connect`) */
+  projectId?: string;
+  /** Auto-sync on Stop hook (default: true) */
+  autoSync?: boolean;
+  /** Glob patterns for file paths to exclude from sync */
+  excludePaths?: string[];
 }
 
 /** Resolved per-rule configuration after merging presets + user config + defaults */

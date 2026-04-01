@@ -15,5 +15,7 @@ export const typescriptStrict: Preset = {
     'quality/import-aliases': {
       aliases: ['@/', '~/'],
     },
+    'quality/no-console-log': true,
+    'quality/max-file-length': true,
   },
 };

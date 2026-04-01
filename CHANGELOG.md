@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0-beta.0] - 2026-04-01
+
+### Added
+
+- **Rule Profiles**: `strict`, `standard`, `relaxed`, `audit` — bulk severity presets for different contexts
+- **New rule**: `security/env-exposure` — blocks client-side code accessing .env files or logging process.env
+- **New rule**: `quality/max-file-length` — warns when files exceed configurable line count (default: 400)
+- **New rule**: `quality/no-console-log` — flags console.log in production source files (allows in tests/scripts)
+- **New rule**: `workflow/todo-tracker` — counts TODO/FIXME/HACK comments and reports increases
+- **Cloud CLI**: `vibecheck cloud login/logout/connect/status` commands for Cloud integration
+- **Sync command**: `vibecheck sync` uploads rule-hits data to VibeCheck Cloud
+- **Cloud module**: credentials management, API client, sync cursor tracking with batch uploads
+- **Cloud config**: `cloud.enabled`, `cloud.projectId`, `cloud.autoSync`, `cloud.excludePaths` settings
+
+### Changed
+
+- Rule count increased from 13 to 17 (6 security, 10 quality, 5 workflow)
+- Updated presets: nextjs-15, typescript-strict, supabase now include new rules
+- Config schema extended with `profile` and `cloud` fields
+
 ## [0.2.0] - 2026-04-01
 
 ### Added
