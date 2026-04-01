@@ -43,13 +43,13 @@ export default defineConfig({
 
 ## Supported Formats
 
-| Format | File | Priority |
-|--------|------|----------|
-| TypeScript | `vibecheck.config.ts` | 1 (highest) |
-| JavaScript | `vibecheck.config.js` | 2 |
-| ESM | `vibecheck.config.mjs` | 3 |
-| JSON | `.vibecheckrc.json` | 4 |
-| package.json | `"vibecheck"` field | 5 (lowest) |
+| Format       | File                   | Priority    |
+| ------------ | ---------------------- | ----------- |
+| TypeScript   | `vibecheck.config.ts`  | 1 (highest) |
+| JavaScript   | `vibecheck.config.js`  | 2           |
+| ESM          | `vibecheck.config.mjs` | 3           |
+| JSON         | `.vibecheckrc.json`    | 4           |
+| package.json | `"vibecheck"` field    | 5 (lowest)  |
 
 ## Options
 
@@ -61,12 +61,12 @@ Array of preset IDs to apply. See [Presets](./presets.md).
 
 Array of AI agent adapters to generate output for.
 
-| Agent | Type | Output |
-|-------|------|--------|
-| `claude-code` | Runtime | `.claude/settings.json` + hook scripts |
-| `cursor` | Advisory | `.cursorrules` + `.cursor/rules/` |
-| `codex` | Advisory | `AGENTS.md` |
-| `opencode` | Advisory | `.opencode/instructions.md` |
+| Agent         | Type     | Output                                 |
+| ------------- | -------- | -------------------------------------- |
+| `claude-code` | Runtime  | `.claude/settings.json` + hook scripts |
+| `cursor`      | Advisory | `.cursorrules` + `.cursor/rules/`      |
+| `codex`       | Advisory | `AGENTS.md`                            |
+| `opencode`    | Advisory | `.opencode/instructions.md`            |
 
 ### `rules`
 

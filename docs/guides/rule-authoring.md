@@ -10,13 +10,14 @@ Every rule implements the `Rule` interface:
 import type { Rule } from '@solanticai/vibecheck';
 
 export const myRule: Rule = {
-  id: 'custom/my-rule',          // category/name format
-  name: 'My Rule',               // Human-readable
+  id: 'custom/my-rule', // category/name format
+  name: 'My Rule', // Human-readable
   description: 'What it checks', // Why it exists
-  severity: 'warn',              // 'block' | 'warn' | 'info'
-  events: ['PreToolUse'],        // When to run
-  match: { tools: ['Write'] },   // Which tools to check
-  check: (context) => {          // The actual check
+  severity: 'warn', // 'block' | 'warn' | 'info'
+  events: ['PreToolUse'], // When to run
+  match: { tools: ['Write'] }, // Which tools to check
+  check: (context) => {
+    // The actual check
     // Your logic here
     return { status: 'pass', ruleId: 'custom/my-rule' };
   },
@@ -82,16 +83,16 @@ import { noBarrelImports } from '../../../src/rules/quality/no-barrel-imports.js
 
 describe('quality/no-barrel-imports', () => {
   it('should warn on barrel imports', () => {
-    const result = noBarrelImports.check(createContext(
-      'import { Button } from "./components/index";'
-    ));
+    const result = noBarrelImports.check(
+      createContext('import { Button } from "./components/index";'),
+    );
     expect(result.status).toBe('warn');
   });
 
   it('should pass on direct imports', () => {
-    const result = noBarrelImports.check(createContext(
-      'import { Button } from "./components/Button";'
-    ));
+    const result = noBarrelImports.check(
+      createContext('import { Button } from "./components/Button";'),
+    );
     expect(result.status).toBe('pass');
   });
 });
@@ -136,7 +137,7 @@ Rules can be async:
 check: async (context): Promise<RuleResult> => {
   const exists = await checkFileExists(importPath);
   // ...
-}
+};
 ```
 
 ## Creating a Plugin

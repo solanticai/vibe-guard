@@ -13,6 +13,7 @@ npx vibecheck init
 ```
 
 The init wizard will:
+
 1. Detect your framework (Next.js, React, etc.)
 2. Ask which AI agents you use
 3. Ask which presets to enable
@@ -34,6 +35,7 @@ npx vibecheck doctor
 ```
 
 This checks:
+
 - Config file exists and is valid
 - Hook scripts are generated
 - Rules are properly configured

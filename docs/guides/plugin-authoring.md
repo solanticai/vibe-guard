@@ -42,8 +42,8 @@ import { validatePlugin } from '@solanticai/vibecheck';
 import myPlugin from './index.js';
 
 const result = validatePlugin(myPlugin, 'vibecheck-plugin-my-rules');
-console.log(result.valid);    // true
-console.log(result.errors);   // []
+console.log(result.valid); // true
+console.log(result.errors); // []
 console.log(result.warnings); // []
 ```
 
