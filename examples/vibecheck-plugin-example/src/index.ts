@@ -6,7 +6,7 @@
  * Configure: plugins: ['vibecheck-plugin-example'] in vibecheck.config.ts
  */
 
-import type { VibeCheckPlugin, Rule, Preset } from 'vibecheck';
+import type { VibeCheckPlugin, Rule, Preset } from '@solanticai/vibecheck';
 
 const noTodoComments: Rule = {
   id: 'example/no-todo-comments',

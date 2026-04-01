@@ -7,7 +7,7 @@ import type { VibeCheckConfig } from '../types.js';
  * @example
  * ```typescript
  * // vibecheck.config.ts
- * import { defineConfig } from 'vibecheck';
+ * import { defineConfig } from '@solanticai/vibecheck';
  *
  * export default defineConfig({
  *   presets: ['nextjs-15', 'tailwind'],

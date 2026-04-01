@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-npm install -D vibecheck
+npm install -D @solanticai/vibecheck
 ```
 
 ## Quick Start

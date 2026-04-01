@@ -7,7 +7,7 @@ Create a VibeCheck plugin to share rules and presets with the community.
 A plugin is an npm package that exports a `VibeCheckPlugin` object:
 
 ```typescript
-import type { VibeCheckPlugin } from 'vibecheck';
+import type { VibeCheckPlugin } from '@solanticai/vibecheck';
 
 const plugin: VibeCheckPlugin = {
   name: 'vibecheck-plugin-my-rules',
@@ -38,7 +38,7 @@ VibeCheck validates plugins before loading:
 ## Testing Your Plugin
 
 ```typescript
-import { validatePlugin } from 'vibecheck';
+import { validatePlugin } from '@solanticai/vibecheck';
 import myPlugin from './index.js';
 
 const result = validatePlugin(myPlugin, 'vibecheck-plugin-my-rules');

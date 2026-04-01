@@ -1,6 +1,6 @@
 {
-  "name": "vibecheck",
-  "version": "0.0.0",
+  "name": "@solanticai/vibecheck",
+  "version": "0.1.0-alpha.0",
   "description": "AI coding guardrails framework. Runtime-enforced quality controls for Claude Code, Cursor, Codex, and more.",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -46,9 +46,20 @@
     "linter",
     "developer-tools"
   ],
-  "author": "VibeCheck Contributors",
+  "author": "SolanticAi",
   "license": "Apache-2.0",
-  "homepage": "https://vibecheck.dev",
+  "homepage": "https://github.com/SolanticAi/vibecheck",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SolanticAi/vibecheck.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SolanticAi/vibecheck/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "engines": {
     "node": ">=20.0.0"
   },

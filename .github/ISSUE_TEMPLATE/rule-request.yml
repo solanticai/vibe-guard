@@ -1,0 +1,81 @@
+name: Rule Request
+description: Suggest a new rule or preset
+labels: [enhancement, rule-request]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Suggest a new rule or preset for VibeCheck. Good rule requests include
+        clear examples of what should pass and what should fail.
+
+  - type: input
+    id: rule-id
+    attributes:
+      label: Suggested Rule ID
+      description: "Format: category/name (e.g., quality/no-barrel-imports)"
+      placeholder: "quality/no-barrel-imports"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Security
+        - Quality
+        - Workflow
+        - New Preset
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Suggested Severity
+      options:
+        - block (prevents the operation)
+        - warn (advises but allows)
+        - info (informational)
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What does this rule check? Why is it important?
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples
+      description: Show code that should pass and code that should fail
+      value: |
+        **Bad (should be caught):**
+        ```typescript
+        // example code that violates the rule
+        ```
+
+        **Good (should pass):**
+        ```typescript
+        // example code that follows the rule
+        ```
+    validations:
+      required: true
+
+  - type: input
+    id: ecosystem
+    attributes:
+      label: Ecosystem / Framework
+      description: Which framework or ecosystem is this rule for?
+      placeholder: "Next.js, React, Django, general TypeScript, etc."
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Would you like to implement this?
+      options:
+        - label: I'd like to submit a PR for this rule

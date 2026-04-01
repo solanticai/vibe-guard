@@ -20,7 +20,7 @@ The current solutions? Monolithic prompt libraries with 136+ skills you'll never
 ## Quick Start
 
 ```bash
-npm install -D vibecheck
+npm install -D @solanticai/vibecheck
 npx vibecheck init
 ```
 
@@ -72,7 +72,7 @@ For agents without hook support, VibeCheck generates configuration files that gu
 Presets bundle ecosystem-specific rules:
 
 ```typescript
-import { defineConfig } from 'vibecheck';
+import { defineConfig } from '@solanticai/vibecheck';
 
 export default defineConfig({
   presets: ['nextjs-15', 'typescript-strict'],
@@ -88,7 +88,7 @@ export default defineConfig({
 ## Configuration
 
 ```typescript
-import { defineConfig } from 'vibecheck';
+import { defineConfig } from '@solanticai/vibecheck';
 
 export default defineConfig({
   presets: ['nextjs-15'],
@@ -138,7 +138,7 @@ VibeCheck's key innovation: **Edit rules only flag newly introduced problems.** 
 ## Creating Custom Rules
 
 ```typescript
-import type { Rule } from 'vibecheck';
+import type { Rule } from '@solanticai/vibecheck';
 
 export const noConsoleLog: Rule = {
   id: 'custom/no-console-log',

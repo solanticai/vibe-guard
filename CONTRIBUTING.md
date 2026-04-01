@@ -3,7 +3,7 @@
 ## Development Setup
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/SolanticAi/vibecheck.git
 cd vibecheck
 npm install
 npm run build

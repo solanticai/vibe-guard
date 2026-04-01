@@ -81,7 +81,7 @@ export async function initCommand(): Promise<void> {
   };
 
   // Write config file
-  const configContent = `import { defineConfig } from 'vibecheck';
+  const configContent = `import { defineConfig } from '@solanticai/vibecheck';
 
 export default defineConfig(${JSON.stringify(config, null, 2)});
 `;

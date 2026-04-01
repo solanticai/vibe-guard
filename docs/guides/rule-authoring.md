@@ -7,7 +7,7 @@ Create a custom VibeCheck rule in 30 minutes.
 Every rule implements the `Rule` interface:
 
 ```typescript
-import type { Rule } from 'vibecheck';
+import type { Rule } from '@solanticai/vibecheck';
 
 export const myRule: Rule = {
   id: 'custom/my-rule',          // category/name format
@@ -144,7 +144,7 @@ check: async (context): Promise<RuleResult> => {
 Package your rules as an npm plugin:
 
 ```typescript
-import type { VibeCheckPlugin } from 'vibecheck';
+import type { VibeCheckPlugin } from '@solanticai/vibecheck';
 
 const plugin: VibeCheckPlugin = {
   name: 'vibecheck-plugin-my-rules',

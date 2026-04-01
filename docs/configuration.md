@@ -5,7 +5,7 @@ VibeCheck is configured via `vibecheck.config.ts` (or `.vibecheckrc.json`).
 ## Config File
 
 ```typescript
-import { defineConfig } from 'vibecheck';
+import { defineConfig } from '@solanticai/vibecheck';
 
 export default defineConfig({
   // Presets bundle ecosystem-specific rules
