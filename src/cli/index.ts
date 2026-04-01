@@ -72,4 +72,28 @@ program
     await lintCommand(options);
   });
 
+program
+  .command('learn')
+  .description('Scan codebase for conventions and suggest rules')
+  .action(async () => {
+    const { learnCommand } = await import('./commands/learn.js');
+    await learnCommand();
+  });
+
+program
+  .command('report')
+  .description('Generate quality dashboard from rule hit data')
+  .action(async () => {
+    const { reportCommand } = await import('./commands/report.js');
+    await reportCommand();
+  });
+
+program
+  .command('eject')
+  .description('Export standalone hooks (removes vibecheck dependency)')
+  .action(async () => {
+    const { ejectCommand } = await import('./commands/eject.js');
+    await ejectCommand();
+  });
+
 program.parse();

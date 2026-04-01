@@ -8,13 +8,16 @@ import '../../src/presets/index.js';
 describe('preset resolution', () => {
   const presetMap = getAllPresets();
 
-  it('should have 5 built-in presets', () => {
-    expect(presetMap.size).toBe(5);
+  it('should have 8 built-in presets', () => {
+    expect(presetMap.size).toBe(8);
     expect(presetMap.has('nextjs-15')).toBe(true);
     expect(presetMap.has('typescript-strict')).toBe(true);
     expect(presetMap.has('react-19')).toBe(true);
     expect(presetMap.has('supabase')).toBe(true);
     expect(presetMap.has('tailwind')).toBe(true);
+    expect(presetMap.has('django')).toBe(true);
+    expect(presetMap.has('fastapi')).toBe(true);
+    expect(presetMap.has('laravel')).toBe(true);
   });
 
   it('nextjs-15 preset enables correct rules', () => {
