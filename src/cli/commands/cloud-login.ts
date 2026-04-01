@@ -7,7 +7,7 @@ const DEFAULT_CLOUD_URL = process.env.VIBECHECK_CLOUD_URL ?? 'https://app.vibech
 const DEFAULT_SUPABASE_URL =
   process.env.VIBECHECK_SUPABASE_URL ?? 'https://mpisrdadthdhpvgimtzv.supabase.co';
 const DEFAULT_OAUTH_CLIENT_ID =
-  process.env.VIBECHECK_OAUTH_CLIENT_ID ?? 'db5741ac-6f1b-4487-a919-4ecfac156472';
+  process.env.VIBECHECK_OAUTH_CLIENT_ID ?? 'd49f2c6e-473a-4b94-acdf-9f282cc9a278';
 
 /**
  * `vibecheck cloud login`
