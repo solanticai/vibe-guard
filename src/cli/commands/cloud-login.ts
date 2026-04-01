@@ -188,7 +188,7 @@ async function oauthPkceLogin(
             code,
             code_verifier: codeVerifier,
             client_id: clientId,
-            redirect_uri: `${cloudHost}/auth/callback/cli`,
+            redirect_uri: `${cloudHost}/callback`,
           }),
         });
 
@@ -226,11 +226,11 @@ async function oauthPkceLogin(
     });
 
     const CLI_CALLBACK_PORT = 3030;
-    // redirect_uri must exactly match what's registered in Supabase (no query params)
-    // Pass cli_port via the OAuth state parameter instead
+    // redirect_uri must exactly match what's registered in Supabase: http://localhost:3000/callback
+    // The dashboard /callback route relays the code to the CLI's local server via the state param
     const cloudHost = options?.cloudUrl ?? DEFAULT_CLOUD_URL;
     server.listen(CLI_CALLBACK_PORT, () => {
-      const redirectUri = `${cloudHost}/auth/callback/cli`;
+      const redirectUri = `${cloudHost}/callback`;
 
       const authUrl = new URL(`${supabaseUrl}/auth/v1/oauth/authorize`);
       authUrl.searchParams.set('client_id', clientId);
