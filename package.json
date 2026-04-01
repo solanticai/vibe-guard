@@ -17,14 +17,15 @@
     },
     "./hooks/runner": {
       "import": "./dist/hooks/runner.js",
-      "require": "./dist/hooks/runner.cjs"
+      "require": "./dist/hooks/runner.cjs",
+      "types": "./dist/hooks/runner.d.ts"
     }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup && node -e \"const f='dist/cli.cjs';const c=require('fs').readFileSync(f,'utf8');if(!c.startsWith('#!'))require('fs').writeFileSync(f,'#!/usr/bin/env node\\n'+c)\" && tsc --emitDeclarationOnly --declaration --outDir dist",
+    "build": "tsup && node -e \"const f='dist/cli.cjs';const c=require('fs').readFileSync(f,'utf8');if(!c.startsWith('#!'))require('fs').writeFileSync(f,'#!/usr/bin/env node\\n'+c)\" && tsc --emitDeclarationOnly --declaration --outDir dist && node -e \"require('fs').writeFileSync('dist/hooks/runner.d.ts','export { executeHook } from \\'../engine/hook-entry.js\\';\\n')\"",
     "dev": "tsup --watch",
     "test": "vitest run",
     "test:watch": "vitest",
