@@ -235,18 +235,27 @@ async function oauthPkceLogin(
       authUrl.searchParams.set('code_challenge_method', 'S256');
       authUrl.searchParams.set('scope', 'openid email');
 
-      // Open browser cross-platform using execFile (no shell)
+      // Open browser cross-platform
+      // On Windows, cmd /c start breaks URLs with & in query strings,
+      // so use PowerShell's Start-Process or rundll32 instead
       const openUrl = authUrl.toString();
-      const openCmd =
-        process.platform === 'win32' ? 'cmd' : process.platform === 'darwin' ? 'open' : 'xdg-open';
-      const openArgs = process.platform === 'win32' ? ['/c', 'start', '', openUrl] : [openUrl];
 
-      execFile(openCmd, openArgs, (err) => {
-        if (err) {
-          console.log(`  Could not open browser. Visit this URL manually:`);
-          console.log(`  ${openUrl}\n`);
-        }
-      });
+      if (process.platform === 'win32') {
+        execFile('rundll32', ['url.dll,FileProtocolHandler', openUrl], (err) => {
+          if (err) {
+            console.log(`  Could not open browser. Visit this URL manually:`);
+            console.log(`  ${openUrl}\n`);
+          }
+        });
+      } else {
+        const openCmd = process.platform === 'darwin' ? 'open' : 'xdg-open';
+        execFile(openCmd, [openUrl], (err) => {
+          if (err) {
+            console.log(`  Could not open browser. Visit this URL manually:`);
+            console.log(`  ${openUrl}\n`);
+          }
+        });
+      }
 
       console.log('  Opening browser for authentication...');
       console.log('  Waiting for approval...\n');
