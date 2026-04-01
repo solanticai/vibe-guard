@@ -4,5 +4,6 @@ node_modules/
 package-lock.json
 .vibecheck/
 .claude/
+docs/
 *.yml
 *.yaml
