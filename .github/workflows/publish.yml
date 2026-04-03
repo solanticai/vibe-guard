@@ -109,7 +109,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm ci
+      - run: npm install
       - run: npm run lint
       - run: npm run format:check
       - run: npm run type-check
@@ -133,7 +133,7 @@ jobs:
           node-version: 22
           registry-url: https://registry.npmjs.org/
 
-      - run: npm ci
+      - run: npm install
       - run: npm run build
 
       - name: Publish to npm with provenance
